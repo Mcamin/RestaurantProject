@@ -28,12 +28,13 @@
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="menu-content pb-70 col-lg-8">
-        <div class=" text-center">
-          <div id="result"></div>
+        <div class=" text-center" id="result"></div>
+        <div id="signupform"class=" text-center">
+
           <div class="container-login100-form-btn">
             <form class="form-wrap text-center" action="" method='post'>
-              <input type="text" class="form-control" name="Username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required>
-              <input type="password" class="form-control  mt-20" name="Password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required>
+              <input type="text" class="form-control" name="Username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" disabled>
+              <input type="password" class="form-control  mt-20" name="Password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" disabled>
               <input class="genric-btn primary circle text-uppercase mt-20" value="Sign in" type='submit' />
               <a href="/" class="text-uppercase genric-btn primary circle btn-margin">Cancel</a>
             </form>
@@ -44,19 +45,14 @@
             </span>
           </div>
           <div class="flex-c p-b-50">
-            <a href="javascript:sendTokenToServer()"  onclick="sendTokenToServer();" class="login100-social-item">
-              <i class="fa fa-facebook-f"></i>
+            <a id="fbbtn" href='#'  class="login100-social-item fa fa-facebook-f">
             </a>
-
             <div class="g-signin login100-social-item" data-onsuccess="onSignIn" data-longtitle="true" data-scope="openid email" data-clientid="191095492347-auvi7b8pqr6268126c7as9aunqrg3sg1.apps.googleusercontent.com" data-redirecturi="postmessage"
               data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback" data-approvalprompt="force">
 
               <img src="{{ url_for('static', filename='img/icons/icon-google.png') }}" alt="GOOGLE">
             </div>
           </div>
-          <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
-            <a href='javascript:sendTokenToServer()'>Login with Facebook</a>
-          </fb:login-button>
           <div class="text-center">
             <a href="#" class="fs-18" style="color:#f42f2c!important;">
               Sign Up
@@ -73,7 +69,7 @@
   function signInCallback(authResult) {
     if (authResult['code']) {
       // Hide the sign-in button now that the user is authorized
-      $('#signinButton').attr('style', 'display: none');
+      $('#signupform').attr('style', 'display: none');
       // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
       $.ajax({
         type: 'POST',
@@ -102,6 +98,11 @@
 </script>
 <!--FACEBOOK SIGN IN -->
 <script>
+document.getElementById('fbbtn').addEventListener('click', function() {
+    //do the login
+    FB.login(sendTokenToServer, {scope: 'email,public_profile', return_scopes: true});
+}, false);
+
   window.fbAsyncInit = function() {
     FB.init({
       appId: '313936632759450',
@@ -129,6 +130,7 @@
     var access_token = FB.getAuthResponse()['accessToken'];
     console.log(access_token)
     console.log('Welcome!  Fetching your information.... ');
+    $('#signupform').attr('style', 'display: none');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       $.ajax({
