@@ -33,8 +33,10 @@
 
           <div class="container-login100-form-btn">
             <form class="form-wrap text-center" action="" method='post'>
-              <input type="text" class="form-control" name="Username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" disabled>
-              <input type="password" class="form-control  mt-20" name="Password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" disabled>
+              <input type="text" class="form-control" name="Username" placeholder="Username"
+                     onfocus="this.placeholder = ''" onblur="this.placeholder = ''" disabled>
+              <input type="password" class="form-control  mt-20" name="Password" placeholder="Password"
+                     onfocus="this.placeholder = ''" onblur="this.placeholder = ''" disabled>
               <input class="genric-btn primary circle text-uppercase mt-20" value="Sign in" type='submit' />
               <a href="/" class="text-uppercase genric-btn primary circle btn-margin">Cancel</a>
             </form>
@@ -47,8 +49,12 @@
           <div class="flex-c p-b-50">
             <a id="fbbtn" href='#'  class="login100-social-item fa fa-facebook-f">
             </a>
-            <div class="g-signin login100-social-item" data-onsuccess="onSignIn" data-longtitle="true" data-scope="openid email" data-clientid="191095492347-auvi7b8pqr6268126c7as9aunqrg3sg1.apps.googleusercontent.com" data-redirecturi="postmessage"
-              data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback" data-approvalprompt="force">
+            <div class="g-signin login100-social-item" data-onsuccess="onSignIn" data-longtitle="true"
+                 data-scope="openid email"
+                 data-clientid="191095492347-auvi7b8pqr6268126c7as9aunqrg3sg1.apps.googleusercontent.com"
+                 data-redirecturi="postmessage"
+                 data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback"
+                 data-approvalprompt="force">
 
               <img src="{{ url_for('static', filename='img/icons/icon-google.png') }}" alt="GOOGLE">
             </div>
@@ -70,7 +76,8 @@
     if (authResult['code']) {
       // Hide the sign-in button now that the user is authorized
       $('#signupform').attr('style', 'display: none');
-      // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+      // Send the one-time-use code to the server, if the server responds, write a 'login successful'
+      // message to the web page and then redirect back to the main restaurants page
       $.ajax({
         type: 'POST',
         url: '/gconnect?state={{STATE}}',

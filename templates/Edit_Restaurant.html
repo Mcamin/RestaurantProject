@@ -28,8 +28,10 @@
   <div class="container">
     <div class="row  center align-items-center">
       <div class="col-lg-6  offset-md-3">
-           <form class="form-wrap text-center"  action="{{ url_for('restaurants_edit',restaurant_id=restaurant_id)}}" method = 'post'>
-             <input type="text" class="form-control" name="name" placeholder="{{item.name}}" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{item.name}}'" required>
+           <form class="form-wrap text-center"  action="{{ url_for('restaurants_edit',restaurant_id=restaurant_id)}}"
+                 method = 'post'>
+             <input type="text" class="form-control" name="name" placeholder="{{item.name}}"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = '{{item.name}}'" required>
              <input class="genric-btn primary circle text-uppercase mt-20" value="Update Name" type='submit'/>
                <a href="/restaurants"class="text-uppercase genric-btn primary circle btn-margin">Cancel</a>
            </form>

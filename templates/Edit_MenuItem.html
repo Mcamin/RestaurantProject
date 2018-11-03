@@ -28,15 +28,19 @@
   <div class="container">
     <div class="row  center align-items-center">
       <div class="col-lg-6  offset-md-3">
-        <form class="form-wrap text-center" action="{{ url_for('menuItem_edit',restaurant_id=restaurant_id,menu_id=menu_id)}}" method='post'>
+        <form class="form-wrap text-center" action="
+        {{ url_for('menuItem_edit',restaurant_id=restaurant_id,menu_id=menu_id)}}" method='post'>
           <div class="mt-10">
-            <input type="text" class="form-control" name="name" placeholder="" onfocus="this.placeholder = ''" value="{{item.name}}" onblur="this.placeholder = ''" required>
+            <input type="text" class="form-control" name="name" placeholder="" onfocus="this.placeholder = ''"
+                   value="{{item.name}}" onblur="this.placeholder = ''" required>
           </div>
           <div class="mt-10">
-            <textarea class="form-control" name="description" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder ='" required="">{{item.description}}</textarea>
+            <textarea class="form-control" name="description" placeholder="" onfocus="this.placeholder = ''"
+                      onblur="this.placeholder ='" required="">{{item.description}}</textarea>
           </div>
           <div class="mt-10">
-            <input type="text" class="form-control" name="price" placeholder="Price" onfocus="this.placeholder = ''" value="{{item.price}}"onblur="this.placeholder = ''" required>
+            <input type="text" class="form-control" name="price" placeholder="Price" onfocus="this.placeholder = ''"
+                   value="{{item.price}}"onblur="this.placeholder = ''" required>
           </div>
           <div class="mt-10">
             <div class="switch-wrap  justify-content-between form-control">
@@ -87,7 +91,8 @@
             </div>
           </div>
           <input class="genric-btn primary circle text-uppercase mt-20" value="Edit Menu Item" type='submit' />
-          <a href="/restaurants/{{restaurant_id}}/menu/" class="text-uppercase genric-btn primary circle btn-margin">Cancel</a>
+          <a href="/restaurants/{{restaurant_id}}/menu/"class="text-uppercase genric-btn primary circle btn-margin">
+            Cancel</a>
         </form>
       </div>
     </div>

@@ -265,7 +265,7 @@ def restaurants_edit(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
     editedItem = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    if login_session['user_id'] != restaurant.user_id:
+    if login_session['user_id'] != editedItem.user_id:
         return "<script>function myFunction() {alert('You are not authorized to delete menu items to this restaurant. Please create your own restaurant in order to delete items.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         if request.form['name']:
@@ -282,7 +282,7 @@ def restaurants_delete(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
     itemToDelete = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    if login_session['user_id'] != restaurant.user_id:
+    if login_session['user_id'] != itemToDelete.user_id:
         return "<script>function myFunction() {alert('You are not authorized to delete menu items to this restaurant. Please create your own restaurant in order to delete items.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         session.delete(itemToDelete)
@@ -318,7 +318,7 @@ def menuItem_delete(restaurant_id,menuItem_id):
     if 'username' not in login_session:
         return redirect('/login')
     itemToDelete = session.query(MenuItem).filter_by(id=menuItem_id).one()
-    if login_session['user_id'] != restaurant.user_id:
+    if login_session['user_id'] != itemToDelete.user_id:
         return "<script>function myFunction() {alert('You are not authorized to delete menu items to this restaurant. Please create your own restaurant in order to delete items.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         session.delete(itemToDelete)
@@ -350,7 +350,7 @@ def menuItem_edit(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')
     editedItem = session.query(MenuItem).filter_by(id=menu_id).one()
-    if login_session['user_id'] != restaurant.user_id:
+    if login_session['user_id'] != editedItem.user_id:
         return "<script>function myFunction() {alert('You are not authorized to delete menu items to this restaurant. Please create your own restaurant in order to delete items.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         if request.form['name']:
